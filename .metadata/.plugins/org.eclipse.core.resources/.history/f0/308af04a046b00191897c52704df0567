@@ -1,0 +1,14 @@
+package nuevo_2;
+public interface ListaTDA<E> {
+	
+	void initializeList();
+	boolean isEmpty();
+	int length();
+	
+	void destroyList();
+	int search(E ele);
+	void insertFirst(E ele);
+	void insertLast(E ele);
+	void deleteNode(E ele);
+	
+}

@@ -1,0 +1,15 @@
+package arrenlazado;
+
+public class mama {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Lista <Integer> liost = new Lista <Integer>();
+		System.out.print("HOLA ");
+		
+		
+
+	}
+
+}

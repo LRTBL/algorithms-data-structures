@@ -1,0 +1,155 @@
+
+public class BSTree<E extends Comparable<E>> {
+	
+	class Node {
+		protected E data;
+		protected Node left, right;
+	
+		public Node(E data, Node left, Node right) {
+			this.data = data;
+			this.left = left;
+			this.right = right;
+		}
+		public Node(E data) {
+			this (data,null,null);
+		}
+	}
+	
+	private Node root;
+	
+	public BSTree(){ 
+		this.root = null; 
+	}
+	public boolean isEmpty(){ 
+		return this.root == null;
+	}
+	public void insert(E x) throws ItemDuplicated {
+		if (isEmpty()) {
+			this.root = new Node (x);
+		}else {
+			Node aux = this.root;
+			Node pad =  null;
+			while (aux != null) {
+				if (aux.data.equals(x)) {
+					throw new ItemDuplicated("El elemento ya esta en el arbol ");
+				}else {
+					pad = aux;  
+					if (aux.data.compareTo(x)> 0) {
+						aux = aux.left;
+					}else {
+						aux = aux.right;
+					}
+				}
+			}
+			if (pad.data.compareTo(x)> 0 ) {
+				pad.left = new Node(x);
+			}else {
+				pad.right = new Node (x);
+			}
+		}
+	}	
+	protected Node search(E x) throws ItemNoFound {
+		if (!isEmpty()) {
+			Node aux = this.root;
+			while (aux!= null && !aux.data.equals(x) ) {
+					if (aux.data.compareTo(x)> 0) {
+						aux = aux.left;
+					}else {
+						aux = aux.right;
+					}
+			}
+			if (aux == null) {   //  con equals salia error al  comparar un null con un dato  
+				throw new ItemNoFound("El elemento no existe ");
+			}
+			return aux;
+		}else {
+			return null;  // retorna null si la lista esta vacia 
+		}
+	}
+	
+	
+	public E Search(E x) throws ItemNoFound {
+		return search(x).data;
+	}		
+
+	
+	public void remove(E x) throws ItemNoFound {
+		Node aux = this.root;
+		Node pad  = null; 
+		while (aux!= null && !aux.data.equals(x)  ) {
+			if (aux.data.compareTo(x)> 0) {
+				pad = aux;
+				aux = aux.left;
+			}else {
+				pad = aux;
+				aux = aux.right;
+			}
+		}
+		if (aux == null ) {
+			throw new ItemNoFound("El elemento no existe ");
+		}else {
+			
+			
+			
+			
+			if (aux.left== null && aux.right == null ) {
+				if (pad != null) {
+					if (pad.data.compareTo(x)>0) {
+						pad.left = null;
+					}else {
+						pad.right = null ; 
+					}
+				}else {
+					// aux = null ;
+				}
+				
+			}else if ( (aux.left != null &&  aux.right == null)   || (aux.left == null &&  aux.right != null)) {
+				if (pad != null) {
+					if (pad.data.compareTo(x) > 0 ){
+						if (aux.left == null) {
+							pad.left = aux.right;
+						}else {
+							pad.left = aux.left;
+						}	
+					}else {
+						if (aux.left == null) {
+							pad.right = aux.right;
+						}else {
+							pad.right = aux.left;
+						}
+					}
+				}else {
+					
+				}
+			}else{
+				Node aux2 = aux.left;
+				while (aux2.right != null) {
+					aux2 = aux2.right;
+				}
+			}
+		}
+		
+	}
+	
+	public String toString() {
+		return "";
+	}
+
+	
+	public void inOrden(){
+		
+		inOrden(this.root);
+
+	}
+		
+	protected void inOrden(Node actual){
+		
+		if (actual != null) {
+			inOrden(actual.left);
+			System.out.println(actual.data+", ");
+			inOrden(actual.right);
+		}
+	}
+	
+}
+

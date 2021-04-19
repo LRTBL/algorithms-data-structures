@@ -1,0 +1,15 @@
+
+public class CuentaDeAhorro extends Cuenta {
+	public float tasaInteres;
+	
+	public CuentaDeAhorro(int a , float b, float c) {
+		super(a,b);
+		this.tasaInteres=c;
+	}
+	public float getSaldo() {
+		return this.getSaldo();
+	}
+	public String toString() {
+		return "Taza de interes:"+this.tasaInteres;
+	}
+}

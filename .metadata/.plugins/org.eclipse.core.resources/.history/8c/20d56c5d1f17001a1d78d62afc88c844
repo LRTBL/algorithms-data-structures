@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class PruebaCuenta {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BaseDatosCuenta base = new BaseDatosCuenta();
+		int opc = 0 ; 
+		String nom = "";
+		String ape = "";
+		String dni = "";
+		int nro  = 0 ; 
+		float sal = 0;
+		boolean flag = false;	
+		Scanner c = new Scanner(System.in);
+		float retiro = 0 ; 
+		float deposito = 0 ; 
+		while (flag != true) {
+			
+		System.out.println("Que cuenta desea hacer: 1. Aperturar Ahorros 2. Aperturar Corriente 3. Ver cuentas 4. salir");
+		opc = c.nextInt();
+		
+		switch(opc) {
+		case 1:
+			System.out.print("CUENTA AHORROS");
+			float interes = 0 ;
+			System.out.print("Ingrese nombre titular");
+			nom = c.next();
+			System.out.print("Ingrese apellido titular");
+			ape = c.next();
+			System.out.print("Ingrese dni titular");
+			dni = c.next();
+			System.out.print("Ingrese numero de cuenta:");
+			nro = c.nextInt();
+			System.out.print("Ingrese saldo de papertura:");
+			sal = c.nextFloat();
+			System.out.print("Ingrese taza de interes:");
+			
+			interes = c.nextFloat();
+			
+			
+			System.out.print("Ingrese monto de deposito o en su defecto 0");
+			retiro = c.nextFloat();
+			System.out.print("Ingrese monto de retiro o en su defecto 0 ");
+			deposito = c.nextFloat();
+			
+			
+			CuentaDeAhorro b = new CuentaDeAhorro(nro , sal , new Titular(nom, ape , dni) , interes);
+			
+			b.deposito(deposito);
+			b.retiro(retiro);
+			
+			
+			base.AgregarCuenta(b);
+			break;
+		case 2 :
+			System.out.print("CUENTA CORRIENTE");
+			float descuento = 0 ;
+			System.out.print("Ingrese nombre titular");
+			nom = c.next();
+			System.out.print("Ingrese apellido titular");
+			ape = c.next();
+			System.out.print("Ingrese dni titular");
+			dni = c.next();
+			System.out.print("Ingrese numero de cuenta:");
+			nro = c.nextInt();
+			System.out.print("Ingrese saldo de papertura:");
+			sal = c.nextFloat();
+			System.out.print("Ingrese taza de descuento:");
+			descuento = c.nextFloat();
+			CuentaCorriente h = new CuentaCorriente(nro , sal , new Titular(nom, ape , dni) , descuento);
+			base.AgregarCuenta(h);
+			break;
+		case 3:
+			base.MostrarCuenta();
+			break;
+		case 4:
+			flag = true;
+		default:
+			System.out.print("Opcion no valida");
+			break;
+		}
+		}
+		
+		
+		
+
+	}
+
+}

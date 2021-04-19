@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Menu {
+	
+	
+	static Scanner out = new Scanner(System.in);
+	public static void main(String[] args) {
+		// INTEGRACION APROXIMADA : REGLA DE SIMPSON 
+		
+		//FUNCION = SEN(x)DX
+		
+		//FUNCION = 1/X DX
+		boolean flg = true ; 
+		int val = 0 ; 
+		do {
+			System.out.println("MENU INTEGRAL APROX. REGLA SIMPSON");
+			System.out.println("----------------------------------");
+			System.out.println("1.-CON 1 SOLO VALOR N");
+			System.out.println("2.-CON MULTIPLES VALORES N");
+			System.out.println("3.-SALIR");
+			val = out.nextInt();
+			switch (val) {
+			case 1  : funcion1();break;
+			case 2  : funcion2();break;
+			case 3  : flg = false ;break;
+			default : System.out.println("OPCION NO VALIDA");break;
+			}
+		}while (flg);
+		System.out.println("PROGRAMA TERMINADO");
+		
+		
+	}
+	
+	public static void funcion2 () {
+		ArrayList<Integer> nuevo = new ArrayList<Integer>();
+		float a = 0; float b = 0 ; int  n = 0 ; int valor = 0 ; float x = 0  ; float res = 0 ;
+		System.out.println("Digite el limite inferior:");a = out.nextFloat();
+		System.out.println("Digite el limite superior:");b = out.nextFloat();
+		System.out.println("Cuantos valores n desea  :");valor = out.nextInt();
+		while (valor > 0 ) {
+			System.out.println("Digite el valor de n     :");n = out.nextInt();
+			nuevo.add(n);
+			valor--;
+		}
+		boolean flag = true ; 
+		for (int i : nuevo) {
+			x = (b - a) / i; 
+			for (float j  = a ; j < b ; j+=x ){
+				if(j == a ) {
+					res = res + 1/j;
+				}else if (flag ) {
+					res = (res + 4*(1/j));
+					//res = (float) (res + 4*(Math.sin(i)));
+					flag = false ; 
+				}else {
+					res = (res + 2*(1/j));
+					//res = (float) (res + 4*(Math.sin(i)));
+					flag = true ; 
+				}
+				
+			}
+			res = res * (x/3);
+			//res = res * x/3;
+			System.out.println("EL RESULTADO DE LA INTEGRACION APROXIMADA DONDE N = "+i+" ES :"+res);
+		}
+	}
+	
+	public static void funcion1 () {
+		float a = 0; float b = 0 ; int  n = 0 ; float x = 0  ; float res = 0 ;
+		System.out.println("Digite el limite inferior:");a = out.nextFloat();
+		System.out.println("Digite el limite superior:");b = out.nextFloat();
+		System.out.println("Digite el valor de n     :");n = out.nextInt();
+		x = (b - a) / n; 
+
+		boolean flag = true ; 
+		for (float i  = a ; i < b ; i+=x ){
+			if(i == a ) {
+				res = res + 1/i;
+			}else if (flag ) {
+				res = (res + 4*(1/i));
+				//res = (float) (res + 4*(Math.sin(i)));
+				flag = false ; 
+			}else {
+				res = (res + 2*(1/i));
+				//res = (float) (res + 4*(Math.sin(i)));
+				flag = true ; 
+			}
+			
+		}
+		res = res * (x/3);
+		//res = res * x/3;
+		System.out.println("EL RESULTADO DE LA INTEGRACION APROXIMADA ES :"+res);
+		
+	}
+}

@@ -1,0 +1,102 @@
+
+public class BSTree<E extends Comparable<E>> {
+	class Node {
+		protected E data;
+		protected Node left, right;
+			
+		public Node(E data, Node left, Node right) {
+			this.data = data;
+			this.left = left;
+			this.right = right;
+		}
+		public Node(E data) {
+			this (data,null,null);
+		}
+	}
+	
+	private Node root;
+	
+	public BSTree(){ 
+		this.root = null; 
+	}
+	public boolean isEmpty(){ 
+		return this.root == null;
+	}
+	
+	
+	public void insert(E x) throws ItemDuplicated {
+		
+		if (isEmpty()) {
+			this.root = new Node (x);
+		}else {
+			Node aux = this.root;
+			Node pad =  null;
+			while (aux != null) {
+				if (aux.data.equals(x)) {
+					throw new ItemDuplicated("El elemento ya esta en el arbol ");
+				}
+				pad = aux;  
+				if (aux.data.compareTo(x)> 0) {
+					aux = aux.left;
+				}else {
+					aux = aux.right;
+				}
+			}
+			if (pad.data.compareTo(x)> 0 ) {
+				pad.left = new Node(x);
+			}else {
+				pad.right = new Node (x);
+			}
+		
+		}
+	}	
+		
+
+	//Metodo que busca un elemento y retorna al referencia del nodo en donde se encuentra en el BST. 
+	//Si no existe se levanta la excepción ItemNoFound
+	protected Node search(E x) throws ItemNoFound {
+		
+		Node aux = this.root;
+		while (!aux.equals(x) && aux!= null) {
+			if (aux.data.compareTo(x)> 0) {
+				aux = aux.left;
+			}else {
+				aux = aux.right;
+			}
+		}
+		if (!aux.equals(x)) {
+			throw new ItemNoFound("El elemento no existe ");
+		}
+		return aux;
+	}
+	
+	//Metodo que busca un elemento y retorna si información. Si no existe se levanta la excepción ItemNoFound
+	public E search(E x) throws ItemNoFound {
+		return search(x);
+	}		
+/*
+	//Metodo que elimina un elemento del BST. Si no existe se levanta la excepción ItemNoFound
+	public void remove(E x) throws ItemNoFound {
+		
+	}
+	
+	//Retorna la cadena que tiene toda la información del BST. Utiliza alguno de los recorridos
+	public String toString() {
+	}
+*/
+	
+	public void inOrden(){
+		inOrden(this.root);
+
+	}
+		
+	protected void inOrden(Node actual){
+		if (actual != null) {
+			inOrden(actual.left);
+			System.out.println(actual.data+", ");
+			inOrden(actual.right);
+		}
+	}
+	
+}
+

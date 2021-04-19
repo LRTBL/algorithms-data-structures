@@ -1,0 +1,24 @@
+
+public abstract class Cuenta {
+	public int numeroDeCuenta;
+	public float saldo;
+	
+	public Cuenta(int a , float b) {
+		this.numeroDeCuenta = a ; 
+		this.saldo = b; 
+	}
+	public void deposito(float a ) {
+		this.saldo+=a;
+	}
+	
+	public void retiro(float a) {
+		this.saldo-=a;
+	}
+	public float getSaldo() {
+		return this.saldo;
+	}
+	
+	public String toString() {
+		return "\nNumero de cuenta:"+this.numeroDeCuenta+"\nSaldo:"+this.saldo;
+	}
+}

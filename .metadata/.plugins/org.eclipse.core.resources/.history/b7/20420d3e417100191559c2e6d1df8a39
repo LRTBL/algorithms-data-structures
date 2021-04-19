@@ -1,0 +1,42 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		BSTree <Integer> b = new BSTree <Integer>();
+		try {
+			
+			b.insert(1);
+			b.insert(2);
+			b.insert(3);
+			b.insert(6);
+			b.insert(5);
+			b.insert(4);
+			b.inOrden();
+		}catch(ItemDuplicated e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		try {
+			System.out.println(b.Search(5));
+		} catch (ItemNoFound e) {
+			
+			System.out.println(e.getMessage());
+		}
+		
+		
+		try {
+			b.remove(2);
+		} catch (ItemNoFound e) {
+			
+			System.out.println(e.getMessage());
+		}
+		b.inOrden();
+		
+		
+	}
+
+}

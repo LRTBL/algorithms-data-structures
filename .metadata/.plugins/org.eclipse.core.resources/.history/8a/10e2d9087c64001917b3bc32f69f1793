@@ -1,0 +1,30 @@
+package arrenlazado;
+
+public class Lista <T> {
+	
+	private Nodo <T> lsta; 
+	
+	public Lista (){
+		this.lsta = null ; 
+	}
+	
+	public <T> void  insertarPrimero (T hola ) {
+		Nodo ex = new Nodo (hola) ;
+		if (this.lsta == null) {
+			
+		}
+		
+	}
+	
+	public void insertarUltimo () {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}

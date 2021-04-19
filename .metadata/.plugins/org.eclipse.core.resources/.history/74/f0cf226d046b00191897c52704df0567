@@ -1,0 +1,122 @@
+package nuevo_2;
+public class ListLinked <T> implements ListaTDA <T> {
+	
+	protected int count;
+    protected NodeList<T> first;
+	
+	public ListLinked(){
+		this.first = null;
+		this.count = 0;
+	} 
+	
+	//Initializes the list to an empty state.
+	//Postcondition: first = null, count = 0
+	public void initializeList(){
+		destroyList()  ;
+	}
+    
+	//Function to determine whether the list is empty. 
+	//Postcondition: Returns true if the list is empty; otherwise, returns false.
+   	public boolean isEmpty(){
+		return this.first == null ; 
+	}
+
+	//Function to return the number of nodes in the list.
+	//Postcondition: The value of count is returned.
+	public int length(){ 
+		return this.count;
+	}
+
+ 	//Function to delete all the nodes from the list.
+  	//Postcondition: first = null, count = 0
+	protected void destroyList(){
+
+		while (this.first != null) {
+			this.first = this.first.getLink();
+		}
+		this.count = 0 ; 
+	}
+
+	//Function to determine whether searchItem is in the list.
+	//Postcondition: Returns the position if searchItem is found in the list;
+	//               otherwise, it returns -1.
+	public int search(T searchItem){
+		
+		NodeList <T> aux = first ; 
+		int post = 0 ;
+		while (aux != null && !aux.getInfo().equals(searchItem)) {
+			aux = aux.getLink();
+			post++;
+		}
+		if (aux != null) {
+			return post;
+		}
+		return -1 ;
+		
+	}
+
+	//Function to insert newItem in the list.
+	//Postcondition: first points to the new list and newItem is 
+	//               inserted at the beginning of the list.
+    public void insertFirst(T newItem){
+		//Here write your cod
+    	
+ 
+    	this.first = new NodeList<T>(newItem, this.first);
+    	this.count++;
+    	
+    	
+    }
+	//Function to return newItem at the end of the list.
+	//Postcondition: first points to the new list, newItem is inserted at 
+	//               the end of the list.
+	public void insertLast(T newItem){
+		if (!isEmpty()) {
+			NodeList <T> aux = first ; 
+			while (aux.getLink() != null) {
+				aux = aux.getLink();
+			}
+			aux.setLink(new NodeList<T> (newItem) );
+			this.count++;
+		}else {
+			insertFirst(newItem);
+		}
+		
+		//Here write your code
+	}
+
+  	//Function to delete deleteItem from the list.
+ 	//Postcondition: If found, the node containing deleteItem is deleted from the 
+	//               list, first points to the first node of the updated list. 
+	public void deleteNode(T deleteItem) {
+		
+		if (isEmpty()) {
+			return;
+		}else if (this.first.getInfo().equals(deleteItem)) {
+			this.first = this.first.getLink();
+			this.count--;
+		}else  {
+	
+			NodeList <T> aux = first ; 
+			while (aux.getLink().getInfo().equals(deleteItem) && aux.getLink() != null ) {
+				aux = aux.getLink();
+			}
+			if (aux.getLink() != null) {
+				aux.setLink(aux.getLink().getLink());
+				this.count--;
+			}
+			
+		}
+		
+	}
+	
+	public String toString () {
+		String res = "";
+		NodeList <T> aux = first ; 
+		while (aux != null) {
+			res+=aux.toString()+"\n";
+			aux = aux.getLink();
+		}
+		return res ;
+	}
+}

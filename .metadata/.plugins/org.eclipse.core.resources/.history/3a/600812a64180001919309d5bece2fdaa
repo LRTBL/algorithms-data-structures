@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Menu {
+
+	public static void main(String[] args) {
+		// INTEGRACION APROXIMADA : REGLA DE SIMPSON 
+		
+		//FUNCION = SEN(x)DX
+		
+		
+		Scanner out = new Scanner(System.in);
+		int a = 0; int b = 0 ; int  n = 0 ; float x = 0  ; float res = 0 ;
+		System.out.println("Digite el limite inferior:"); out.nextInt(a);
+		System.out.println("Digite el limite superior:");out.nextInt(b);
+		System.out.println("Digite el valor de n     :");out.nextInt(n);
+		x = (b - a) / n; 
+		for (int i  = a ; i < b ; i+=x ){
+			res = (float) (res + Math.sin(i));
+		}
+		res = res * (x/3);
+		System.out.println(res);
+		
+		
+		
+		
+	}
+
+		
+	
+	
+	
+
+}

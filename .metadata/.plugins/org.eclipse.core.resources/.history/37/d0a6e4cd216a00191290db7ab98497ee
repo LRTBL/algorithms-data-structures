@@ -1,0 +1,41 @@
+package nuevo_2;
+
+public class Testeo {
+
+	public static void main(String[] args) {
+		
+		/*PilaArray<Integer> nuevo = new PilaArray<Integer>(5) ;
+		nuevo.apilar(5);
+		nuevo.apilar(3);
+		nuevo.apilar(5);
+		nuevo.apilar(7);
+		
+
+		System.out.println(nuevo.toString());
+		nuevo.desapilar();
+		
+		System.out.println(nuevo.toString());
+		
+		
+		nuevo.desapilar();
+		
+		System.out.println(nuevo.toString());
+		nuevo.apilar(9);
+		
+		System.out.println(nuevo.toString());
+		*/
+		
+		
+		
+		ColaLink<Integer> nuevo = new ColaLink <Integer>() ;
+		nuevo.encolar(9);
+		nuevo.encolar(2);
+		nuevo.encolar(3);
+		nuevo.encolar(4);
+		nuevo.encolar(5);
+		System.out.println(nuevo.toString());
+		
+		
+	}
+
+}

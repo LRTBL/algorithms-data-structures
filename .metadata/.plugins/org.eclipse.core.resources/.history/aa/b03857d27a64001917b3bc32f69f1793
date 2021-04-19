@@ -1,0 +1,8 @@
+package arrenlazado;
+
+public class Lista <T> {
+	private Nodo nuevo = null  ; 
+	
+	public Lista (){
+	}
+}

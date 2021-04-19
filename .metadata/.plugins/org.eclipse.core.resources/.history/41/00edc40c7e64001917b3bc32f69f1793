@@ -1,0 +1,17 @@
+package arrenlazado;
+
+public class mama {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Lista <Integer> lt = new Lista <Integer>();
+		
+		
+		lt.insertarPrimero(1);
+		lt.insertarPrimero(5);
+		lt.imprimir();
+
+	}
+
+}

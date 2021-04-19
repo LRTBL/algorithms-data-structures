@@ -1,0 +1,18 @@
+package arrenlazado;
+
+public class Lista <T> {
+	
+	private Nodo <T> lsta; 
+	
+	public Lista (){
+		this.lsta = null ; 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,20 @@
+package arrenlazado;
+
+public class Nodo <T>{
+	
+	public T dato; 
+	public  Nodo <T> siguiente; 
+	
+	public Nodo (Nodo sig , T dat ) {
+		
+		this.dato = dat ; 
+		this.siguiente = sig ; 
+		
+	}
+	
+	public Nodo (T dat) {
+		
+		this.dato = dat;
+		this.siguiente = null ; 
+	}
+}

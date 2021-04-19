@@ -1,0 +1,46 @@
+package arrenlazado;
+
+public class Lista <T> {
+	
+	private Nodo <T> lsta; 
+	
+	public Lista (){
+		
+		this.lsta = null ; 
+	}
+	
+	public  void  insertarPrimero (T hola ) {
+		
+		Nodo <T> ex = new Nodo <T> (hola);
+		
+		if (this.lsta == null) {
+			lsta.dato = (T) hola ; 
+		}else {
+			ex.siguiente = lsta;
+		}
+		
+	}
+	
+	public void insertarUltimo () {
+		
+	}
+	
+	public void imprimir () {
+		Nodo aux = lsta;
+		while (aux.siguiente != null) {
+			System.out.print(aux.dato);
+			aux= aux.siguiente ; 
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}
